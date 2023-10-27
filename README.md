@@ -36,6 +36,8 @@ d20+d12+2-1   根据得出的【随机数】与【灵活数值】相加得到总
 - *1.可以投掷的骰子数量不限*
 - *2.可以±的灵活数值不限*
 
+------
+
 # Create React App
 
 This directory is a brief example of a [Create React App](https://github.com/facebook/create-react-app) site that can be deployed to Vercel with zero configuration.
