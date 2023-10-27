@@ -1,0 +1,11 @@
+
+.App{
+    width: 100%;
+    min-height: 100vh;
+    background: url("../img/bg.jpg") no-repeat center;
+    background-size: cover;
+    .choose-dice{
+        display: flex;
+        background-color: #fff;
+    }
+}
