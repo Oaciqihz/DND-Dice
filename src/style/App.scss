@@ -4,17 +4,17 @@
     min-height: 100vh;
     padding: 15% 0;
     background: url("../img/bg.jpg") no-repeat center;
-    background-size: cover;
+    background-color: #000;
+    background-position: top;
     .role, .choose-dice{
-        display: flex;
-        background-color: #fff;
-    }
-    .role{
         width: 50%;
         height: 30px;
         margin: 0 auto 10px;
         border-radius: 3px;
         position: relative;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
         .btn-reduce{
             width: 30px;
             height: 30px;
@@ -24,5 +24,12 @@
             position: absolute;
             right: -50px;
         }
+    }
+    .choose-dice{
+        width: 65%;
+        margin-top: 10px;
+    }
+    .btn-roll:focus{
+        background-color: #a52714 ;
     }
 }
