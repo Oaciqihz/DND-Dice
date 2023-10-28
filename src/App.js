@@ -97,7 +97,17 @@ function App() {
                 <option value="add">+</option>
                 <option value="reduce">-</option>
               </Select>
-              <Input height={30} min={1} type="number" value={attr.value} onChange={(e) => changeRoleAttr(index, "value", Number(e.target.value))} />
+              <Input 
+                height={30} 
+                min={1} 
+                type="number" 
+                value={attr.value} 
+                onChange={(e) => {
+                  const inputValue = e.target.value;
+                  const newValue = inputValue !== "" ? Number(inputValue) : "";
+                  changeRoleAttr(index, "value", newValue)
+                }}
+              />
               <Button className="btn-reduce" onClick={() => delRoleAttr(index)}>
                 {CusotmIcon({key: "reduce"})}
               </Button>
@@ -119,7 +129,11 @@ function App() {
           min={1}
           type="number" 
           value={diceObj.num} 
-          onChange={(e) => changeDiceObj("num", Number(e.target.value))} 
+          onChange={(e) => {
+            const inputValue = e.target.value;
+            const newValue = inputValue !== "" ? Number(inputValue) : "";
+            changeDiceObj("num", newValue);
+          }} 
         />
         {/* 骰子面数 */}
         <Select 
