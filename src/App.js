@@ -123,6 +123,18 @@ function App() {
         fontFamily="Times New Roman" 
         textShadow="1px 2px #fff"
       >CHOOSE YOUR DICE</Text>
+      {
+        rollLog.length !== 0 &&
+          <Text 
+            color="#a52714"
+            fontSize={25} 
+            fontWeight={600}
+            fontFamily="Times New Roman" 
+            textShadow="1px 1px #fff"
+          >
+              {rollLog[rollLog.length - 1].totalNum}
+          </Text>
+      }
       <div className="choose-dice">
         {/* 骰子个数 */}
         <Input 
@@ -148,6 +160,7 @@ function App() {
         </Select>
         <Button onClick={rollDice}>Roll</Button>
       </div>
+      
 
       <Text 
         mt="30px"
@@ -156,7 +169,7 @@ function App() {
         fontFamily="Times New Roman" 
         textShadow="1px 2px #fff"
       >DICE ROLL LOG</Text>
-      <List bg="#fff" border="1px" borderRadius="10px" borderColor="#a52714" w="80%" margin="0 auto" padding="0 10px" >
+      <List maxH="230px" overflow="hidden" overflowY="auto" bg="#fff" border="1px" borderRadius="10px" borderColor="#a52714" w="80%" margin="0 auto" padding="0 10px" >
         {
           rollLog.map((log, index) =>           
             <li key={index} style={{ borderBottom: "1px solid #000" }}>
