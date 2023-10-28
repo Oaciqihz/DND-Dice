@@ -76,17 +76,17 @@ function App() {
       for (let i = 0; i < num; i++) {
         const randomNum = getRandomInt(1, side);
         total += randomNum;
-        log = log + randomNum + ","
+        log = log + randomNum + ", "
       }
     })
     // 总和 + 属性
     roleAttr.forEach(attr => {
       if (attr.type === "add") {
         total += attr.value;
-        log = log+"+ "+attr.value;
+        log = log+"+"+attr.value;
       }else{
         total -= attr.value;
-        log = log+"- "+attr.value;
+        log = log+"-"+attr.value;
       }
     })
     // 添加到历史记录中
@@ -214,14 +214,16 @@ function App() {
         {/* 掷骰子 */}
         <Button 
           className="btn-roll"
-          h="30px"
+          w="200px"
+          h="40px"
           padding="0 20px"
           margin="10px auto 0"
           bg="#a52714" 
           border="1px solid #000" 
           borderRadius="40px"
           boxShadow="1px 1px 5px #000c"
-          fontSize="20px"
+          fontSize="23px"
+          fontWeight="800"
           color="#fff" 
           fontFamily="Times New Roman" 
           textShadow="1px 1px #000" 
@@ -247,7 +249,7 @@ function App() {
                     <Text fontStyle="italic">{log.time}</Text>
                     <Text>Rolling line: <strong>{log.rollLine}</strong></Text>
                     <Text>{log.total}</Text>
-                    <Text>TOTAL: <span style={{color:"#a52714"}}>{log.totalNum}</span></Text>
+                    <Text>TOTAL: <span style={{color:"#a52714", fontSize: "20px", lineHeight: "20px", fontWeight: "800"}}>{log.totalNum}</span></Text>
                   </li>
                 )
               }
