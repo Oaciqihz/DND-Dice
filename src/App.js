@@ -1,22 +1,23 @@
 import { Box, Button, Input, List, Select, Text } from '@chakra-ui/react';
 import './App.css';
 import "./style/App.scss";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getRandomInt } from './utils/string/getRandomInt';
 import { CusotmIcon } from './components/CutsomIcon';
 import { getTimeStamp } from './utils/date';
+import CustomModal from './components/CustomModal';
 
+const diceSideOptions = [
+  { label: "d20", value: 20 },
+  { label: "d12", value: 12 },
+  { label: "d10", value: 10 },
+  { label: "d8", value: 8 },
+  { label: "d6", value: 6 },
+  { label: "d4", value: 4 }
+]
 function App() {
 
-  const diceSideOptions = [
-    { label: "d20", value: 20 },
-    { label: "d12", value: 12 },
-    { label: "d10", value: 10 },
-    { label: "d8", value: 8 },
-    { label: "d6", value: 6 },
-    { label: "d4", value: 4 }
-  ]
-  
+  const roleRef = useRef(null);
   let [roleAttr, setRoleAttr] = useState([]);
   let [diceObj, setDiceObj] = useState([{
     num: 1, side: 6,
@@ -113,38 +114,48 @@ function App() {
   return (
     <div className="App">
 
+      {/* 设置骰子个数 */}
+      <Button onClick={() => {roleRef.current.onOpen()}}>test</Button>
       {/* 角色设置 */}
-      <Text 
+      {/* <Text 
         fontSize={30} 
         fontWeight={600} 
         fontFamily="Times New Roman" 
         textShadow="1px 2px #fff"
-      >ROLE ATTRIBUTES</Text>
-      {
-        roleAttr.map((attr, index) => 
-          <div className="role" key={index}>
-              <Select height={30} value={attr.type} onChange={(e) => changeRoleAttr(index, "type", e.target.value)}>
-                <option value="add">+</option>
-                <option value="reduce">-</option>
-              </Select>
-              <Input 
-                height={30} 
-                min={1} 
-                type="number" 
-                value={attr.value} 
-                onChange={(e) => {
-                  const inputValue = e.target.value;
-                  const newValue = inputValue !== "" ? Number(inputValue) : "";
-                  changeRoleAttr(index, "value", newValue)
-                }}
-              />
-              <Button className="btn-reduce" onClick={() => delRoleAttr(index)}>
-                {CusotmIcon({key: "reduce"})}
-              </Button>
-          </div>
-        )
-      }
-      <Button mt={5} onClick={addRoleAttr}>ADD ROLE ATTRIBUTES</Button>
+      >ROLE ATTRIBUTES</Text> */}
+      <CustomModal 
+        ref={roleRef}
+        title="ROLE ATTRIBUTES"
+      >
+        {
+          roleAttr.map((attr, index) => 
+            <div className="role" key={index}>
+                <Select height={30} value={attr.type} onChange={(e) => changeRoleAttr(index, "type", e.target.value)}>
+                  <option value="add">+</option>
+                  <option value="reduce">-</option>
+                </Select>
+                <Input 
+                  height={30} 
+                  min={1} 
+                  type="number" 
+                  value={attr.value} 
+                  onChange={(e) => {
+                    const inputValue = e.target.value;
+                    const newValue = inputValue !== "" ? Number(inputValue) : "";
+                    changeRoleAttr(index, "value", newValue)
+                  }}
+                />
+                <Button className="btn-reduce" onClick={() => delRoleAttr(index)}>
+                  {CusotmIcon({key: "reduce"})}
+                </Button>
+            </div>
+          )
+        }
+        <Button mt={5} onClick={addRoleAttr}>ADD ROLE ATTRIBUTES</Button>
+      </CustomModal>
+
+
+
 
 
       {/* 骰子设置 */}
@@ -211,6 +222,7 @@ function App() {
               {rollLog[rollLog.length - 1].totalNum}
           </Text>
         }
+        {/* 优势劣势骰子选择 */}
         {/* 掷骰子 */}
         <Button 
           className="btn-roll"

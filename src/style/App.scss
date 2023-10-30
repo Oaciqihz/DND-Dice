@@ -6,30 +6,30 @@
     background: url("../img/bg.jpg") no-repeat center;
     background-color: #000;
     background-position: top;
-    .role, .choose-dice{
-        width: 50%;
+}
+.role, .choose-dice{
+    width: 50%;
+    height: 30px;
+    margin: 0 auto 10px;
+    border-radius: 3px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    .btn-reduce{
+        width: 30px;
         height: 30px;
-        margin: 0 auto 10px;
-        border-radius: 3px;
-        position: relative;
-        display: flex;
-        align-items: center;
-        background-color: #fff;
-        .btn-reduce{
-            width: 30px;
-            height: 30px;
-            min-width: auto;
-            padding: 0;
-            background-color: #ffffff00;
-            position: absolute;
-            right: -50px;
-        }
+        min-width: auto;
+        padding: 0;
+        background-color: #ffffff00;
+        position: absolute;
+        right: -50px;
     }
-    .choose-dice{
-        width: 65%;
-        margin-top: 10px;
-    }
-    .btn-roll:focus{
-        background-color: #a52714 ;
-    }
+}
+.choose-dice{
+    width: 65%;
+    margin-top: 10px;
+}
+.btn-roll:focus{
+    background-color: #a52714 ;
 }
